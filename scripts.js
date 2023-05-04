@@ -1,7 +1,14 @@
+let round = document.getElementById('round');
+const btnRock = document.getElementById('rock');
+const btnPaper = document.getElementById('paper');
+const btnScissors = document.getElementById('scissors');
+const youChose = document.getElementById('you');
+const computerChose = document.getElementById('computer');
+const result = document.getElementById('result');
+const winner = document.getElementById('winner');
+
 function getComputerChoice() {
-
     let computerChoice = Math.floor(Math.random() * 3);
-
     if (computerChoice === 0) {
         return 'rock';
     } else if (computerChoice === 1) {
@@ -9,10 +16,7 @@ function getComputerChoice() {
     } else {
         return 'scissors';
     }
-
 }
-
-
 
 function playRound(playerSelection, computerSelection) {
 
@@ -39,12 +43,9 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
 function keepResult(roundResult) {
-    
     let tie = roundResult.slice(0,3);
     let win = roundResult.slice(0,7);
-
     if (tie === 'Tie') {
         return 1;
     } else if (win === 'You Win') {
@@ -54,9 +55,7 @@ function keepResult(roundResult) {
     }   
 }
 
-
 function getTotalWinner(playerTotal,computerTotal) {
-
     if (playerTotal > computerTotal) {
         console.log('You Win after 5 rounds!');
     } else if (playerTotal < computerTotal) {
@@ -64,26 +63,28 @@ function getTotalWinner(playerTotal,computerTotal) {
     } else {
         console.log('Tie after 5 rounds!');
     }
-
 }
 
 
 function game() {
-    
     let playerTotal = 0;
     let computerTotal = 0;
+    let playerSelection = '';
 
     for (let i = 0; i < 5; i++) {
-        
-        console.log('Round ' + (i+1) + ' --------------');
+        round.textContent = 'Round ' + (i+1);
 
-        let computerChoice = getComputerChoice();
-        let playerSelection = prompt('Enter Paper, Rock or Scissors');
+        let computerChoice = getComputerChoice();    
+        
+        
+        btnRock.addEventListener('click', )
+        
+
         let roundResult = '';
 
 
-        console.log('Computer selected: ' + computerChoice);
-        console.log('You selected: ' + playerSelection.toLowerCase());
+        computerChose.textContent = 'Computer selected: ' + computerChoice;
+        youChose.textContent = 'You selected: ' + playerSelection.toLowerCase();
 
         roundResult = playRound(playerSelection, computerChoice);
         console.log(roundResult);
@@ -96,6 +97,7 @@ function game() {
             computerTotal++;
             playerTotal++;
         }
+ 
     }
 
     console.log('Your total score: ' + playerTotal);
